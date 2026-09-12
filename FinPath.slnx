@@ -5,5 +5,9 @@
     <Project Path="src/FinPath.Domain/FinPath.Domain.csproj" Id="d946f8b1-0354-4338-ba85-3212ac247165" />
     <Project Path="src/FinPath.Infrastructure/FinPath.Infrastructure.csproj" Id="30c12ff0-7731-4140-b351-27a57a86fe5c" />
   </Folder>
-  <Folder Name="/tests/" />
+  <Folder Name="/tests/">
+    <Project Path="tests/FinPath.ArchitectureTests/FinPath.ArchitectureTests.csproj" Id="c8dd65b5-d6e2-4619-8ae3-5b35db900b49" />
+    <Project Path="tests/FinPath.IntegrationTests/FinPath.IntegrationTests.csproj" Id="126fcfdd-e779-42da-b6c4-bb51030adf95" />
+    <Project Path="tests/FinPath.UnitTests/FinPath.UnitTests.csproj" Id="1a0a99ae-45cd-4ca5-bfda-3f0a9e19c473" />
+  </Folder>
 </Solution>
