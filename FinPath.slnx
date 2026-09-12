@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/FinPath.Api/FinPath.Api.csproj" Id="b2a0faad-00df-4217-8407-49489cc17e32" />
+    <Project Path="src/FinPath.Application/FinPath.Application.csproj" Id="041feff7-463a-4919-93cb-83b64ecac663" />
+    <Project Path="src/FinPath.Domain/FinPath.Domain.csproj" Id="d946f8b1-0354-4338-ba85-3212ac247165" />
+    <Project Path="src/FinPath.Infrastructure/FinPath.Infrastructure.csproj" Id="30c12ff0-7731-4140-b351-27a57a86fe5c" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>
