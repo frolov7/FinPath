@@ -1,0 +1,49 @@
+name: FinPath CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-tests:
+    name: Build and Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore FinPath.slnx
+
+    - name: Build solution
+      run: >
+        dotnet build FinPath.slnx 
+        --no-restore 
+        --configuration Release
+
+    - name: Run tests
+      run: >
+        dotnet test FinPath.slnx 
+        --no-build 
+        --configuration Release 
+        --logger "trx;LogFileName=test_results.trx"
+
+    - name: Upload test results
+      if : always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: '**/test_results.trx'
+        if-no-files-found: warn
