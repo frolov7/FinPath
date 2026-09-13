@@ -10,4 +10,7 @@
     <Project Path="tests/FinPath.IntegrationTests/FinPath.IntegrationTests.csproj" Id="126fcfdd-e779-42da-b6c4-bb51030adf95" />
     <Project Path="tests/FinPath.UnitTests/FinPath.UnitTests.csproj" Id="1a0a99ae-45cd-4ca5-bfda-3f0a9e19c473" />
   </Folder>
+  <Folder Name="/Элементы решения/">
+    <File Path="compose.yml" />
+  </Folder>
 </Solution>
