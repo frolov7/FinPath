@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FinPath.Domain.Accounts;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinPath.Infrastructure.Persistence
 {
@@ -8,6 +9,7 @@ namespace FinPath.Infrastructure.Persistence
         {
         }
 
+        public DbSet<Account> Accounts => Set<Account>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
