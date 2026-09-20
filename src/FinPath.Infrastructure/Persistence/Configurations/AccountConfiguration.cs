@@ -62,6 +62,9 @@ namespace FinPath.Infrastructure.Persistence.Configurations
             
             builder.HasIndex(account => new { account.UserId, account.IsArchived })
                 .HasDatabaseName("ix_accounts_user_id_is_archived");
+
+            builder.HasIndex(account => account.UserId)
+                .HasDatabaseName("ix_accounts_user_id");
         }
     }
 }
