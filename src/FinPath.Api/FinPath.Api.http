@@ -1,6 +1,10 @@
-@FinPath.Api_HostAddress = http://localhost:5077
+@FinPath_Api_HostAddress = http://localhost:5077
 
-GET {{FinPath.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+POST {{FinPath_Api_HostAddress}}/api/v1/auth/register
+Content-Type: application/json
 
-###
+{
+  "email": "user@example.com",
+  "displayName": "Yevgeniy",
+  "password": "Passwordd1!"
+}
