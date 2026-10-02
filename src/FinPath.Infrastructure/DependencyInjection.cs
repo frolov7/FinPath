@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using FinPath.Application.Common.Interfaces;
+using FinPath.Infrastructure.Authentication;
+using FinPath.Infrastructure.Persistence.Repositories;
 
 namespace FinPath.Infrastructure
 {
@@ -13,6 +16,11 @@ namespace FinPath.Infrastructure
 
             services.AddDbContext<FinPathDbContext>(options =>
                 options.UseNpgsql(connectionString));
+
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUnitOfWork>(provider => 
+                provider.GetRequiredService<FinPathDbContext>());
 
             return services;
         }

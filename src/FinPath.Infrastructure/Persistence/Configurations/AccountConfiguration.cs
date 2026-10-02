@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FinPath.Domain.Accounts;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using FinPath.Domain.Users;
 
 namespace FinPath.Infrastructure.Persistence.Configurations
 {
@@ -65,6 +66,12 @@ namespace FinPath.Infrastructure.Persistence.Configurations
 
             builder.HasIndex(account => account.UserId)
                 .HasDatabaseName("ix_accounts_user_id");
+
+            builder.HasOne<User>()
+                .WithMany()
+                .HasForeignKey(account => account.UserId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("fk_accounts_users_user_id");
         }
     }
 }
