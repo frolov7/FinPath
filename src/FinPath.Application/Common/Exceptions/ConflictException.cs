@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FinPath.Application.Common.Exceptions
+﻿namespace FinPath.Application.Common.Exceptions
 {
     public sealed class ConflictException : Exception
     {

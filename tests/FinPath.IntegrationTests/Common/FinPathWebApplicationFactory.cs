@@ -1,4 +1,5 @@
-﻿using FinPath.Infrastructure.Persistence;
+﻿using System.Security.Cryptography;
+using FinPath.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,34 @@ namespace FinPath.IntegrationTests.Common
                 .WithUsername("finpath")
                 .WithPassword("finpath_test_password")
                 .Build();
+
+        private readonly string _tokenSecret;
+
+        public FinPathWebApplicationFactory()
+        {
+            var secretBytes = new byte[64];
+
+            RandomNumberGenerator.Fill(secretBytes);
+
+            _tokenSecret =
+                Convert.ToBase64String(secretBytes);
+
+            Environment.SetEnvironmentVariable(
+                "Jwt__Issuer",
+                "FinPath.Api");
+
+            Environment.SetEnvironmentVariable(
+                "Jwt__Audience",
+                "FinPath.Client");
+
+            Environment.SetEnvironmentVariable(
+                "Jwt__Secret",
+                _tokenSecret);
+
+            Environment.SetEnvironmentVariable(
+                "Jwt__ExpirationMinutes",
+                "30");
+        }
 
         protected override void ConfigureWebHost(
             IWebHostBuilder builder)

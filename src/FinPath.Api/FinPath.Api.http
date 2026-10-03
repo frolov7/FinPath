@@ -1,10 +1,28 @@
 @FinPath_Api_HostAddress = http://localhost:5077
 
+### Регистрация пользователя
+
 POST {{FinPath_Api_HostAddress}}/api/v1/auth/register
 Content-Type: application/json
 
 {
-  "email": "user@example.com",
+  "email": "1@example.com",
   "displayName": "Yevgeniy",
-  "password": "Passwordd1!"
+  "password": "Password1!"
 }
+
+### Вход пользователя
+
+POST {{FinPath_Api_HostAddress}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "1@example.com",
+  "password": "Password1!"
+}
+
+###
+
+GET {{FinPath_Api_HostAddress}}/api/v1/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3MWY4NWQwMy1lM2M3LTRlMWUtOWU0Mi02NzU2ZGQ1NmE0ZTQiLCJlbWFpbCI6IjFAZXhhbXBsZS5jb20iLCJuYW1lIjoiWWV2Z2VuaXkiLCJqdGkiOiI1YjhjMTdhMS03OGYyLTRhODAtYjY4NC03MjI5YmU1YmM3ZDMiLCJpYXQiOjE3OTEwNTQ2MDMsIm5iZiI6MTc5MTA1NDYwMywiZXhwIjoxNzkxMDU2NDAzLCJpc3MiOiJGaW5QYXRoLkFwaSIsImF1ZCI6IkZpblBhdGguQ2xpZW50In0.u8io3bV4a353hJjl5CaaZME3g9Us7qjx1IC-oi7kqXQ
+Accept: application/json

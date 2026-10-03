@@ -71,6 +71,28 @@ namespace FinPath.Api.ExceptionHandling
 
                 return true;
             }
+            else if (exception is UnauthorizedException unauthorizedException)
+            {
+                httpContext.Response.StatusCode =
+                    StatusCodes.Status401Unauthorized;
+
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status401Unauthorized,
+                    Title = "Ошибка аутентификации",
+                    Detail = unauthorizedException.Message,
+                    Instance = httpContext.Request.Path
+                };
+
+                await _problemDetailsService.WriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+
+                return true;
+            }
             else
             {
                 _logger.LogError(
