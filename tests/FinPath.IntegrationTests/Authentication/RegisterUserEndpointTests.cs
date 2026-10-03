@@ -1,4 +1,4 @@
-﻿using FinPath.Api.Contracts.Authentication;
+﻿using FinPath.Api.Contracts.Authentication.Register;
 using FinPath.Application.Common.Interfaces;
 using FinPath.Infrastructure.Persistence;
 using FinPath.IntegrationTests.Common;

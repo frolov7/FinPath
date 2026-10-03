@@ -1,4 +1,4 @@
-﻿namespace FinPath.Api.Contracts.Authentication
+﻿namespace FinPath.Api.Contracts.Authentication.Register
 {
     public sealed class RegisterUserRequest
     {
